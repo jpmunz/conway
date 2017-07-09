@@ -18,29 +18,55 @@ var PATTERNS = {
       '.O...O\n' +
       '..OOO\n' +
       'OO...OO\n'
+  },
+  GOOSE: {
+    delay: 300,
+    pattern:
+      'O.........OO\n' +
+      '.O......OOO.O\n' +
+      '...OO..OO\n' +
+      '....O\n' +
+      '........O\n' +
+      '....OO...O\n' +
+      '...O.O.OO\n' +
+      '...O.O..O.OO\n' +
+      '..O....OO\n' +
+      '..OO\n' +
+      '..OO\n' +
+      '};\n'
   }
-};
+}
 
 var STROKE_COLOR = '#000000';
 var DEFAULT_FILL = '#F2CF0C';
-var DEFAULT_DELAY = 120;
+var DEFAULT_DELAY = 200;
+
+/*
 var ROWS = 20;
 var COLUMNS = 20;
 var CELL_SIZE = 30;
 var GRID_WIDTH = COLUMNS * CELL_SIZE;
 var GRID_HEIGHT = ROWS * CELL_SIZE;
+*/
+
+var GRID_WIDTH = 1200;
+var GRID_HEIGHT = 700;
+var CELL_SIZE = 80;
+var ROWS = Math.floor(GRID_HEIGHT / CELL_SIZE);
+var COLUMNS = Math.floor(GRID_WIDTH / CELL_SIZE);
 
 var canvasElement = document.getElementById('game');
 var canvas = canvasElement.getContext('2d');
 var cells = [];
 
+console.log(ROWS * COLUMNS);
 
 canvasElement.setAttribute('width', GRID_WIDTH);
 canvasElement.setAttribute('height', GRID_HEIGHT);
 
 canvas.strokeStyle = STROKE_COLOR;
 
-init(PATTERNS.BEE);
+init(PATTERNS.GLIDER);
 
 function mod(n, m) {
     return ((n % m) + m) % m;
